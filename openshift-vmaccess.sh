@@ -3,7 +3,7 @@ echo "**************************************************************************
 	echo "`date` -- Adding student to wheel group for sudo access'" >>/root/lsprovision.log
 	usermod -G wheel demouser
 echo "********************************************************************************************"
-	echo "`date` -- Setting Root Password to 'Microsoft'" >>/root/lsprovision.log
+	echo "`date` -- Setting Root Password to 'demoPassword1!'" >>/root/lsprovision.log
 	echo "demoPassword1!" | passwd --stdin root
 echo "********************************************************************************************"
 	echo "`date` -- Creating required logical volumes" >>/root/lsprovision.log
@@ -54,7 +54,7 @@ echo "**************************************************************************
 	openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/pki/tls/certs/novnc.pem -out /etc/pki/tls/certs/novnc.pem -days 365 -subj "/C=US/ST=Michigan/L=Ann Arbor/O=Lift And Shift/OU=Lift And Shift/CN=stkirk.cloud"
 	su -c "mkdir .vnc" - demouser
 	wget --quiet --no-check-certificate -P /home/demouser/.vnc https://raw.githubusercontent.com/stuartatmicrosoft/Azure-Linux-Migration-Workshop/master/provision-scripts/passwd
-        chown student:student /home/demouser/.vnc/passwd
+        chown demouser:demouser /home/demouser/.vnc/passwd
         chmod 600 /home/demouser/.vnc/passwd
 	iptables -I INPUT 1 -m tcp -p tcp --dport 6080 -j ACCEPT
 	service iptables save
