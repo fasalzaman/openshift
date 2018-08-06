@@ -1,9 +1,4 @@
-echo "********************************************************************************************"
-	echo "`date` -- Adding student to wheel group for sudo access'" >>/root/lsprovision.log
-	usermod -G wheel demouser
-echo "********************************************************************************************"
-	echo "`date` -- Setting Root Password to 'demoPassword1!'" >>/root/lsprovision.log
-	echo "demoPassword1!" | passwd --stdin root
+
 echo "********************************************************************************************"
 	echo "`date` -- Creating required logical volumes" >>/root/lsprovision.log
 	lvcreate -n libvirtlv -L+20G rootvg
